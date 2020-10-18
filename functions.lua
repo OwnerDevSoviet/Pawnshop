@@ -33,7 +33,6 @@ function HasItem(item)
 
 end
 function buildOptions(target)
-    buildTracer(target, "value")
     local help = {
         ['sell'] = 'sellP',
         ['buy'] = 'buyP'
@@ -52,6 +51,7 @@ for k,v in ipairs(Config.items) do --pure shit solution here
     end
     end
 end
+buildTracer(target, "value")
 end
 local tracers = {}
 function buildTracer(target, field)
