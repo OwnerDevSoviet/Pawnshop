@@ -1,10 +1,21 @@
 ESX = nil
-
+function dump(o)
+  if type(o) == 'table' then
+     local s = '{ '
+     for k,v in pairs(o) do
+        if type(k) ~= 'number' then k = '"'..k..'"' end
+        s = s .. '['..k..'] = ' .. dump(v) .. ','
+     end
+     return s .. '} '
+  else
+     return tostring(o)
+  end
+end
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 CreateThread(function()
   print("^3Registering server cb: "..'pawnshop:GetOwnership')
   ESX.RegisterServerCallback('pawnshop:GetOwnership', function(playerId, item, cb)
-    print("EVENT DATA: "..json.encode(playerId)..' item: '..json.encode(item))
+    print("EVENT DATA: "..dump(playerId)..' item: '..dump(item))
     local xPlayer = ESX.GetPlayerFromId(playerId)
     local xItem   = xPlayer.getInventoryItem(item)
     if xItem.count > 0 then
