@@ -23,13 +23,14 @@ end
 options = {}
 --target: either sell or buy
 function HasItem(item)
-    local result
-    local p = promise:new()
+    local result = nil
     ESX.TriggerServerCallback('esx:getSharedObject', function(bool)
         result = bool
-        p:resolve(play)
     end, GetPlayerServerId(PlayerId()), item)
-    return Citizen.Await(result)
+    while result == nil do
+        Wait(50)
+    end
+    return result
 
 end
 function buildOptions(target)
