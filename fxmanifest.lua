@@ -2,9 +2,9 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'Blackmarket'
+description 'Pawnshop'
 
-author 'OwnerDevSoviet#0001'
+author 'SovietRulez#0001'
 
 version '1.0.0'
 
