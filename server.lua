@@ -2,6 +2,7 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 CreateThread(function()
+  print("^3Registering server cb: "..'pawnshop:GetOwnership')
   ESX.RegisterServerCallback('pawnshop:GetOwnership', function(cb, playerId, item)
     local xPlayer = ESX.GetPlayerFromId(playerId)
     local xItem   = xPlayer.getInventoryItem(item)

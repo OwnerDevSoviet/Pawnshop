@@ -25,9 +25,10 @@ options = {}
 function HasItem(item)
     print("^2Checking item status")
     local result = nil
-    ESX.TriggerServerCallback('esx:getSharedObject', function(bool)
+    ESX.TriggerServerCallback('pawnshop:GetOwnership', function(bool)
+        print("^3Handler result: "..tostring(result))
         result = bool
-    end, GetPlayerServerId(PlayerId()), item)
+    end, tonumber(GetPlayerServerId(PlayerId())), item)
     while result == nil do
         Wait(50)
     end
