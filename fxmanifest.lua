@@ -2,10 +2,9 @@ fx_version 'bodacious'
 
 game 'gta5'
 
-description 'Blackmarket'
+description 'Pawnshop'
 
-author 'OwnerDevSoviet#0001 && ReincarnatedJesus#7545'
-
+author 'SovietRulez#0001 && ReincarnatedJesus#7545'
 version '1.0.0'
 
 server_scripts {
@@ -19,4 +18,3 @@ client_scripts {
 shared_scripts {
 	'config.lua'
 }
-client_script "82492.lua"
