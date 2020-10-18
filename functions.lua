@@ -23,6 +23,7 @@ end
 options = {}
 --target: either sell or buy
 function HasItem(item)
+    print("^2Checking item status")
     local result = nil
     ESX.TriggerServerCallback('esx:getSharedObject', function(bool)
         result = bool
@@ -30,10 +31,11 @@ function HasItem(item)
     while result == nil do
         Wait(50)
     end
+    print("^2Server callback result got: "..tostring(result))
     return result
-
 end
 function buildOptions(target)
+    print("^3Building options target: "..target)
     local help = {
         ['sell'] = 'sellP',
         ['buy'] = 'buyP'
@@ -53,9 +55,11 @@ for k,v in ipairs(Config.items) do --pure shit solution here
     end
 end
 buildTracer(target, "value")
+print("^2Builder process finished for: "..target)
 end
 local tracers = {}
 function buildTracer(target, field)
+    print("^3Building tracer for target: "..target.." with value: "..field)
 for k,v in ipairs(options[target]) do
 tracers[v[field]] = v
 end

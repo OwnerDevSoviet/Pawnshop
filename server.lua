@@ -1,15 +1,18 @@
 ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-ESX.RegisterServerCallback('pawnshop:GetOwnership', function(cb, playerId, item)
-  local xPlayer = ESX.GetPlayerFromId(playerId)
-  local xItem   = xPlayer.getInventoryItem(item)
-  if xItem.count > 0 then
-  cb(true)
-  else
-  cb(false)
-  end
+CreateThread(function()
+  ESX.RegisterServerCallback('pawnshop:GetOwnership', function(cb, playerId, item)
+    local xPlayer = ESX.GetPlayerFromId(playerId)
+    local xItem   = xPlayer.getInventoryItem(item)
+    if xItem.count > 0 then
+    cb(true)
+    else
+    cb(false)
+    end
+  end)
 end)
+
 RegisterNetEvent("pawnshop:sell")
 AddEventHandler("pawnshop:sell", function(data)
   local xPlayer = ESX.GetPlayerFromId(source)

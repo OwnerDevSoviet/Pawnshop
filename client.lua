@@ -10,6 +10,7 @@ end)
 
 local pawn = Config.PawnShop
 CreateThread(function()
+    print("^2Main thrd running")
     for k, v in ipairs(pawn) do
         local blip = AddBlipForCoord(v.x, v.y)
         SetBlipSprite(blip, 606)
@@ -19,16 +20,19 @@ CreateThread(function()
         AddTextComponentString("PawnShop")
         EndTextCommandSetBlipName(blip)
     end
+    print('^2Made blips')
+
     while true do
         Wait(0)
         local ped = PlayerPedId()
         local coords = GetEntityCoords(ped)
-        
         for k, v in ipairs(pawn) do
             if #(coords - v.xyz) < Config.Distance then
+                print('^2 [MAIN THRD]: Inside IF: #(coords - v.xyz) < Config.Distance')
                 DrawMarker(Config.MarkerStyle, v.xyz, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size1, Config.Size2, Config.Size3 ,Config.Color.r, Config.Color.g, Config.Color.b, 200, false, true, 2, true, false, false, false)
                 ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to sell yo shizz')
                 if #(coords - v.xyz) < 2.0 and IsControlJustPressed(1, 38) then
+                    print('^2 [MAIN THRD]: Inside IF: #(coords - v.xyz) < 2.0 and IsControlJustPressed(1, 38)')
                   OpenMenu()
                 end
             end
@@ -41,6 +45,7 @@ local isMenu2Open = false --buy
 
 
 function OpenMenu()
+    print('^2Opening seller menu')
    buildOptions("sell") --just to get fresh results
 
     isMenuOpen = true
@@ -62,6 +67,7 @@ function OpenMenu()
 end
 
 function OpenSecondMenu()
+    print('^2Opening buyer menu')
    buildOptions("buy") --just to get fresh results
    isMenu2Open = true
    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'second_menu', {
