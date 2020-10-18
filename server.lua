@@ -3,7 +3,8 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 CreateThread(function()
   print("^3Registering server cb: "..'pawnshop:GetOwnership')
-  ESX.RegisterServerCallback('pawnshop:GetOwnership', function(cb, playerId, item)
+  ESX.RegisterServerCallback('pawnshop:GetOwnership', function(playerId, item, cb)
+    print("EVENT DATA: "..json.encode(playerId)..' item: '..json.encode(item))
     local xPlayer = ESX.GetPlayerFromId(playerId)
     local xItem   = xPlayer.getInventoryItem(item)
     if xItem.count > 0 then
