@@ -38,7 +38,7 @@ Citizen.CreateThread(function()
         SetBlipDisplay(blip, 6)
         SetBlipScale(blip, 0.9)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("Pineapple PawnShop")
+        AddTextComponentString("PawnShop")
         EndTextCommandSetBlipName(blip)
     end
     while true do
