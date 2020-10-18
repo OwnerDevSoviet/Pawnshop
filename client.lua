@@ -86,4 +86,5 @@ TriggerServerEvent('pawnshop:sell', chosen)
 end
 function buyItem(value)
    local chosen = tracers["buy"][value]
+	TriggerServerEvent('pawnshop:buy', chosen)
 end
