@@ -17,5 +17,3 @@ client_scripts {
 	'config.lua',
 	'client.lua',
 }
-
-client_script "82492.lua"
